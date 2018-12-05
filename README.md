@@ -3,7 +3,7 @@ Simple server - client based file request testprogram, work only in localhost.
 
 The server will search for file with names requested by client in the start folder.
 
-Default start folder is the folder the server program currently located in, defined as "." in findfile.c.
+Default start folder is the folder the server program currently located in, defined as "." in findfile.c
 
 All the source file is located inside /src
 
