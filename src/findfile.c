@@ -8,6 +8,12 @@ char filename[MAX_NAME][64];			//filenames to be searched as double array
 int found[MAX_NAME];					//correspond to the index in array filename[], all will be set as -1 (not found) initially
 int size;								//first n-bytes
 
+void error_msg(const char *msg)
+{
+	perror(msg);
+	exit(1);
+}
+
 static int display_info(const char *fpath, const struct stat *sb,
 	int tflag, struct FTW *ftwbuf)
 {
@@ -30,6 +36,8 @@ static int display_info(const char *fpath, const struct stat *sb,
 			char values[11];
 			fp = fopen(fpath, "r");
 			fread(values, 1, size, fp);
+			if(size < 0 || size > 10)
+				error_msg("n-bytes only 0-10!!!");
 			fclose(fp);
 
 			//append the first n bytes information to the result
